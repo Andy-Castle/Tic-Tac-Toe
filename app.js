@@ -5,6 +5,7 @@ const Game = (function () {
   return { makeTable, restartTable };
 })();
 
-document.addEventListener("DOMContentLoaded", function () {
-  const board = document.getElementById("board");
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//   const board = document.getElementById("board");
+//   board.textContent = Game.makeTable();
+// });
