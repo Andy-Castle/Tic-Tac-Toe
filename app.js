@@ -16,3 +16,5 @@ const Game = (function () {
 //   const board = document.getElementById("board");
 //   board.textContent = Game.makeTable();
 // });
+
+//https://www.youtube.com/watch?v=AnmwHjpEhtA
