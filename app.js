@@ -31,7 +31,6 @@ function Game() {
   function GetNamesPlayers() {
     playerOne = playerOneInput.value;
     playerTwo = playerTwoInput.value;
-    namePlayer = playerOne;
 
     if (!playerOneInput.value) {
       playerOne = "X";
@@ -39,6 +38,8 @@ function Game() {
     if (!playerTwoInput.value) {
       playerTwo = "O";
     }
+
+    namePlayer = playerOne;
 
     cellContaier.style.display = "grid";
     statusText.style.display = "block";
