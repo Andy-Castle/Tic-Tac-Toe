@@ -8,28 +8,27 @@
   </head>
   <body>
     <main>
-      <h1 class="title">Tic Tac Toe Game</h1>
-      <p class="text"><span id="player-turn">Player turn's</span></p>
-      <div id="board">
-        <table style="width: 50%">
-          <tr>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-          </tr>
-          <tr>
-            <th>4</th>
-            <th>5</th>
-            <th>6</th>
-          </tr>
-          <tr>
-            <th>7</th>
-            <th>8</th>
-            <th>9</th>
-          </tr>
-        </table>
+      <div id="gameContainer">
+        <h1>Tic Tac Toe</h1>
+        <div id="playersInput">
+          <input type="text" id="player1" placeholder="Name Player one" />
+          <input type="text" id="player2" placeholder="Name Player two" />
+          <button id="startGame">Start</button>
+        </div>
+        <div id="cellContainer">
+          <div cellIndex="0" class="cell"></div>
+          <div cellIndex="1" class="cell"></div>
+          <div cellIndex="2" class="cell"></div>
+          <div cellIndex="3" class="cell"></div>
+          <div cellIndex="4" class="cell"></div>
+          <div cellIndex="5" class="cell"></div>
+          <div cellIndex="6" class="cell"></div>
+          <div cellIndex="7" class="cell"></div>
+          <div cellIndex="8" class="cell"></div>
+        </div>
+        <h2 id="statusText"></h2>
+        <button id="restartBtn">Restart</button>
       </div>
-      <button id="restart">Restart</button>
     </main>
     <script src="app.js" defer></script>
   </body>
