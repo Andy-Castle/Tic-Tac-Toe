@@ -40,3 +40,7 @@
 #restartBtn {
   display: none;
 }
+
+#playersInput {
+  display: grid;
+}

@@ -2,6 +2,12 @@ function Game() {
   const cells = document.querySelectorAll(".cell");
   const statusText = document.querySelector("#statusText");
   const restartBtn = document.querySelector("#restartBtn");
+  const playerOneInput = document.querySelector("#player1");
+  const playerTwoInput = document.querySelector("#player2");
+  const btnStartGame = document.querySelector("#startGame");
+  const cellContaier = document.querySelector("#cellContainer");
+  const playersContainer = document.querySelector("#playersInput");
+
   const winCondition = [
     [0, 1, 2],
     [3, 4, 5],
@@ -15,14 +21,36 @@ function Game() {
 
   let options = ["", "", "", "", "", "", "", "", ""];
   let currentPlayer = "X";
+  let namePlayer = "";
+  let playerOne = "";
+  let playerTwo = "";
   let running = false;
 
-  initializeGame();
+  btnStartGame.addEventListener("click", GetNamesPlayers);
+
+  function GetNamesPlayers() {
+    playerOne = playerOneInput.value;
+    playerTwo = playerTwoInput.value;
+    namePlayer = playerOne;
+
+    if (!playerOneInput.value) {
+      playerOne = "X";
+    }
+    if (!playerTwoInput.value) {
+      playerTwo = "O";
+    }
+
+    cellContaier.style.display = "grid";
+    statusText.style.display = "block";
+    restartBtn.style.display = "inline";
+    playersContainer.style.display = "none";
+    initializeGame();
+  }
 
   function initializeGame() {
     cells.forEach((cell) => cell.addEventListener("click", cellClicked));
     restartBtn.addEventListener("click", restartGame);
-    statusText.textContent = `${currentPlayer}'s turn`;
+    statusText.textContent = `${namePlayer}'s turn`;
     running = true;
   }
 
@@ -44,7 +72,8 @@ function Game() {
 
   function changePlayer() {
     currentPlayer = currentPlayer == "X" ? "O" : "X";
-    statusText.textContent = `${currentPlayer}'s turn`;
+    namePlayer = namePlayer == playerOne ? playerTwo : playerOne;
+    statusText.textContent = `${namePlayer}'s turn`;
   }
 
   function checkWinner() {
@@ -66,7 +95,7 @@ function Game() {
     }
 
     if (roundWon) {
-      statusText.textContent = `${currentPlayer} wins!`;
+      statusText.textContent = `${namePlayer} wins!`;
       running = false;
     } else if (!options.includes("")) {
       statusText.textContent = `Draw!`;
@@ -79,9 +108,15 @@ function Game() {
   function restartGame() {
     currentPlayer = "X";
     options = ["", "", "", "", "", "", "", "", ""];
-    statusText.textContent = `${currentPlayer}'s turn`;
+    statusText.textContent = `${namePlayer}'s turn`;
     cells.forEach((cell) => (cell.textContent = ""));
     running = true;
+    cellContaier.style.display = "none";
+    statusText.style.display = "none";
+    restartBtn.style.display = "none";
+    playerOneInput.value = "";
+    playerTwoInput.value = "";
+    playersContainer.style.display = "grid";
   }
 }
 
